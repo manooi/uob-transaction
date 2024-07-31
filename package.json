@@ -1,0 +1,19 @@
+{
+  "name": "uob",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "iconv-lite": "^0.6.3",
+    "json2csv": "^6.0.0-alpha.2",
+    "moment": "^2.30.1",
+    "pdf-parse": "^1.1.1",
+    "tabletojson": "^4.1.4"
+  }
+}
