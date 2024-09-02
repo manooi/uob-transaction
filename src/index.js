@@ -3,11 +3,30 @@ const multer = require('multer');
 const fs = require('fs');
 const { Parser } = require('json2csv');
 const { readPDF, parseAmount, parseDescription, parseDate } = require('./util/util.js');
+const path = require("path");
 
 const app = express();
 const port = 3000;
 
+
+// Set up static files
+app.use(express.static(path.join(__dirname, "..", 'public')));
+app.use('/css', express.static(path.join(__dirname, "..", 'node_modules/bootstrap/dist/css')));
+app.use('/js', express.static(path.join(__dirname, "..", 'node_modules/bootstrap/dist/js')));
+
+// Set up view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, "..", 'views'));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const upload = multer({ dest: 'uploads/' });
+
+
+app.get("/", async(req, res)=> {
+    res.render("index");
+})
 
 app.post('/upload', upload.single('file'), async (req, res) => {
     if (!req.file) {
